@@ -32,9 +32,21 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  }
+  'get /': {
+    view: 'homepage',
+    locals: {
+     layout: 'layout'
+      }
+  },
+
+  'get /table': {
+    controller: 'Supernovas',
+    action: 'index',
+    locals: {
+       layout: 'table'
+      }
+   }
+   //'delete /table/supernova/:id'
 
   /***************************************************************************
   *                                                                          *
@@ -45,5 +57,6 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
+ //TODO: add 'import' route, with a JS controller.
 
 };
