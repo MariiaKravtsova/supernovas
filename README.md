@@ -3,7 +3,6 @@
 a [Sails](http://sailsjs.org) application that tracks, groups, and let's you explore the most recent supernovas.
 
 To Do:
-- display table
 - search by date
 - search by discoverer
 - Sort by column

@@ -29,12 +29,22 @@
         <th>Date</th>
   			<th>Discoverer</th>
   		</tr>
+
+
+      <% _.each(supernovas, function(supernova) { %>
       <tr>
-        <% _.each(supernovas, function (supernova) { %>
-        <td><%= supernova.sn %></td>
-        <td><%= supernova.suphost %></td>
-        <% }) %>
+          <td><%= supernova.sn %></td>
+          <td><%= supernova.suphost %></td>
+          <td><%= supernova.galaxy %></td>
+          <td><%= supernova.mag %></td>
+          <td><%= supernova.position %></td>
+          <td><%= supernova.suptype %></td>
+          <td><%= supernova.date %></td>
+          <td><%= supernova.discoverer %></td>
       </tr>
+      <% }) %>
+
+
     </table>
     <ul>
 
