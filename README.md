@@ -1,6 +1,16 @@
-# supernovas
+# Explore Supernovas
 
 a [Sails](http://sailsjs.org) application that tracks, groups, and let's you explore the most recent supernovas.
+
+To Do:
+- display table
+- search by date
+- search by discoverer
+- Sort by column
+- Group by type
+- Group by galaxy
+- Add new supernovae
+- Update a supernovae
 
 # What Causes a Supernova?
 A supernova happens where there is a change in the core, or center, of a star. A change can occur in two different ways, with both resulting in a supernova.
@@ -15,3 +25,5 @@ A supernova burns for only a short period of time, but it can tell scientists a 
 One kind of supernova has shown scientists that we live in an expanding universe, one that is growing at an ever increasing rate.
 
 Scientists also have determined that supernovas play a key role in distributing elements throughout the universe. When the star explodes, it shoots elements and debris into space. Many of the elements we find here on Earth are made in the core of stars. These elements travel on to form new stars, planets and everything else in the universe.
+
+App developed by Dillon Stone and Mariia Kravtsova.
