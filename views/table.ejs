@@ -46,6 +46,7 @@
           </div>
           <button type="button" id="search" class="btn btn-default">Submit</button>
           <button type="button" class="add-button btn btn-default">Add new supernova</button>
+          <button type="button" id="reset" class="btn btn-default">Reset rows</button>
         </form>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -104,12 +105,21 @@
 
   $('#search').click(function(){
     var sn = $('#sn').val();
-    $('tr.nova-row').each(function(){
-      $(this).css('display', 'none');
-    })
-    $('tr[id^='+sn+']').each(function(){
-      $(this).css('display', 'table-row');
-    })
+    if(sn.length) {
+      $('tr.nova-row').each(function () {
+        $(this).css('display', 'none');
+      })
+      $('tr[id^=' + sn + ']').each(function () {
+        $(this).css('display', 'table-row');
+      })
+      $("#reset").css("display", "inline-block");
+    }
+  })
+
+  $("#reset").css('display', 'none');
+  $("#reset").click(function(){
+    $("tr.nova-row").css("display", "table-row");
+    $(this).css("display", "none");
   })
 
   var rowProps = function () {
@@ -182,7 +192,7 @@
   $('.add-button').click(function () {
     var table = $('.table');
     var SN = (Math.floor(Math.random() * 9000 + 1000)).toString() + "C";
-    var newRow = $('<tr class="newRow" id=' + SN + '>' +
+    var newRow = $('<tr class="newRow nova-row" id=' + SN + '>' +
       '<td>' + SN + '</td>' +
       '<td class="editable" id="suphost"></td>' +
       '<td class="editable" id="galaxy"></td>' +
