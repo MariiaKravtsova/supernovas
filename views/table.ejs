@@ -1,6 +1,4 @@
 <link href='https://fonts.googleapis.com/css?family=Raleway:400,500' rel='stylesheet' type='text/css'>
-
-    <link href="styles/table.css" rel="stylesheet" type="text/css">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -20,28 +18,38 @@
     <title>Explore Supernovas</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    		<link rel="stylesheet" href="styles/table.css" />
 </head>
 
 <body>
-<div id="wrapper">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <form class="form-inline">
-                <div class="form-group">
-                    <label for="input" class="sr-only">Input</label>
-                    <input type="input" class="form-control" id="input" placeholder="Input">
-                </div>
-                <select class="form-control">
-                    <option>Search by date</option>
-                    <option>Search by id</option>
-                    <option>Group by galaxy</option>
-                    <option>Group by type</option>
-                </select>
-                <button type="submit" class="btn btn-primary btn-sm">Try it!</button>
-                <button type="button" class="add-button btn btn-warning btn-sm">Add new supernova</button>
-            </form>
-        </div>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Explore Supernovas</a>
     </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="button" class="add-button btn btn-default">Add new supernova</button>
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div id="wrappertable">
     <table class="table table-condensed">
       <div  class="tbl-header">
         <tr>
@@ -69,11 +77,11 @@
             <td class="editable" id="date"><%= supernova.date %></td>
             <td class="editable" id="discoverer"><%= supernova.discoverer %></td>
             <td>
-                <button class="edit-button btn btn-success" id="<%= supernova.sn %>">Edit</button>
-                <button class="save-button btn btn-info" style="display: none" id="<%= supernova.sn %>">Save</button>
+                <button class="edit-button button-white js-touch-effect" id="<%= supernova.sn %>">Edit</button>
+                <button class="save-button button-white js-touch-effect" style="display: none" id="<%= supernova.sn %>">Save</button>
             </td>
             <td>
-                <button class="del-button btn btn-danger" id="<%= supernova.sn %>">Delete</button>
+                <button class="del-button button-white js-touch-effect" id="<%= supernova.sn %>">Delete</button>
             </td>
         </tr>
         <% }) %>
