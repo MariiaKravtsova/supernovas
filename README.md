@@ -8,8 +8,6 @@ To Do:
 - Sort by column
 - Group by type
 - Group by galaxy
-- Add new supernovae
-- Update a supernovae
 
 # What Causes a Supernova?
 A supernova happens where there is a change in the core, or center, of a star. A change can occur in two different ways, with both resulting in a supernova.
