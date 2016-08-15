@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 <!-- Latest compiled and minified JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!DOCTYPE HTML>
 <html>
@@ -47,24 +48,60 @@
   			<th>Type</th>
         <th>Date</th>
   			<th>Discoverer</th>
+        <th></th>
+        <th></th>
   		</tr>
 
 
       <% _.each(supernovas, function(supernova) { %>
-      <tr>
+      <tr id="<%= supernova.sn%>">
           <td><%= supernova.sn %></td>
-          <td><%= supernova.suphost %></td>
-          <td><%= supernova.galaxy %></td>
-          <td><%= supernova.mag %></td>
-          <td><%= supernova.position %></td>
-          <td><%= supernova.suptype %></td>
-          <td><%= supernova.date %></td>
-          <td><%= supernova.discoverer %></td>
+          <td class="editable"><%= supernova.suphost %></td>
+          <td class="editable"><%= supernova.galaxy %></td>
+          <td class="editable"><%= supernova.mag %></td>
+          <td class="editable"><%= supernova.position %></td>
+          <td class="editable"><%= supernova.suptype %></td>
+          <td class="editable"><%= supernova.date %></td>
+          <td class="editable"><%= supernova.discoverer %></td>
+          <td><button class="edit-button" id="<%=supernova.sn%>">Edit</button></td>
+          <td><button class="del-button" id="<%=supernova.sn%>">Delete</button></td>
       </tr>
       <% }) %>
 
 
     </table>
   </div>
+  <script type="text/javascript">
+    $('.edit-button').click(function(){
+      var editBtn = $(this).html;
+      $("tr#"+this.id+" td.editable").each(function(){
+        var html = $(this).html;
+        var input = $('<input class="saveable" type="text" />');
+        input.val(html);
+        $(this).html(input);
+      })
+      var saveBtn = $('<button class="save-button" id=this.id>Save</button>');
+      saveBtn.click(function(){
+        $("tr#"+this.id+" td.saveable input").each(function(){
+          var val = $(this).val;
+          $(this).parent().val(val);
+        })
+        $(this).html(editBtn);
+      })
+      $(this).html(saveBtn);
+    })
+
+    $('.del-button').click(function(){
+      var id = this.id;
+      $.ajax({
+        url: 'supernovas/delete?sn=' + this.id,
+        type: 'DELETE',
+        success: function (result) {
+          $("tr#" + id).remove();
+        }
+      })
+    })
+
+  </script>
   </body>
 </html>

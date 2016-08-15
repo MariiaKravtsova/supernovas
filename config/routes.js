@@ -45,8 +45,11 @@ module.exports.routes = {
     locals: {
        layout: 'table'
       }
+   },
+   'delete supernova/delete': {
+     controller: 'Supernovas',
+     action: 'delete'
    }
-   //'delete /table/supernova/:id'
 
   /***************************************************************************
   *                                                                          *

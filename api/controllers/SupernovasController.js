@@ -14,8 +14,13 @@ module.exports = {
 		 });
 	 });
  },
- // delete: function(req, res) {
- //  //var name = req.formData.name;
- // }
+ delete: function(req, res) {
+    Supernovas.destroy({'sn' : req.param('sn')}).exec(function(err, result){
+      return res.ok();
+    })
+ },
+  update: function(req, res){
+
+  }
 
 };
