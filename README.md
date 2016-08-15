@@ -2,13 +2,6 @@
 
 a [Sails](http://sailsjs.org) application that tracks, groups, and let's you explore the most recent supernovas.
 
-To Do:
-- search by date
-- search by discoverer
-- Sort by column
-- Group by type
-- Group by galaxy
-
 # What Causes a Supernova?
 A supernova happens where there is a change in the core, or center, of a star. A change can occur in two different ways, with both resulting in a supernova.
 
