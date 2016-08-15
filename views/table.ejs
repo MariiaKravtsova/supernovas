@@ -1,107 +1,215 @@
 <link href='https://fonts.googleapis.com/css?family=Raleway:400,500' rel='stylesheet' type='text/css'>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 <!DOCTYPE HTML>
 <html>
-  <head>
+<head>
     <title>Explore Supernovas</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-  </head>
+</head>
 
-  <body>
-  <div id="wrapper">
+<body>
+<div id="wrapper">
     <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-
-        <form class="form-inline">
-
-          <div class="form-group">
-            <label for="input" class="sr-only">Input</label>
-            <input type="input" class="form-control" id="input" placeholder="Input">
-          </div>
-        <select class="form-control">
-          <option>Search by date</option>
-          <option>Search by id</option>
-          <option>Group by galaxy</option>
-          <option>Group by type</option>
-        </select>
-        <button type="submit" class="btn btn-primary btn-sm">Try it!</button>
-      </form>
-  </div>
-  </div>
+        <div class="col-md-6 col-md-offset-3">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="input" class="sr-only">Input</label>
+                    <input type="input" class="form-control" id="input" placeholder="Input">
+                </div>
+                <select class="form-control">
+                    <option>Search by date</option>
+                    <option>Search by id</option>
+                    <option>Group by galaxy</option>
+                    <option>Group by type</option>
+                </select>
+                <button type="submit" class="btn btn-primary btn-sm">Try it!</button>
+                <button type="button" class="add-button btn btn-warning btn-sm">Add new supernova</button>
+            </form>
+        </div>
+    </div>
     <table class="table table-condensed">
-      <tr>
-  			<th>Serial Number</th>
-  			<th>Host</th>
-  			<th>Galaxy</th>
-  			<th>Magnitude</th>
-  			<th>Position</th>
-  			<th>Type</th>
-        <th>Date</th>
-  			<th>Discoverer</th>
-        <th></th>
-        <th></th>
-  		</tr>
+        <tr>
+            <th>Serial Number</th>
+            <th>Host</th>
+            <th>Galaxy</th>
+            <th>Magnitude</th>
+            <th>Position</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Discoverer</th>
+            <th></th>
+            <th></th>
+        </tr>
 
-
-      <% _.each(supernovas, function(supernova) { %>
-      <tr id="<%= supernova.sn%>">
-          <td><%= supernova.sn %></td>
-          <td class="editable"><%= supernova.suphost %></td>
-          <td class="editable"><%= supernova.galaxy %></td>
-          <td class="editable"><%= supernova.mag %></td>
-          <td class="editable"><%= supernova.position %></td>
-          <td class="editable"><%= supernova.suptype %></td>
-          <td class="editable"><%= supernova.date %></td>
-          <td class="editable"><%= supernova.discoverer %></td>
-          <td><button class="edit-button" id="<%=supernova.sn%>">Edit</button></td>
-          <td><button class="del-button" id="<%=supernova.sn%>">Delete</button></td>
-      </tr>
-      <% }) %>
-
+        <% _.each(supernovas, function(supernova) { %>
+        <tr id="<%= supernova.sn %>">
+            <td><%= supernova.sn %></td>
+            <td class="editable" id="suphost"><%= supernova.suphost %></td>
+            <td class="editable" id="galaxy"><%= supernova.galaxy %></td>
+            <td class="editable" id="mag"><%= supernova.mag %></td>
+            <td class="editable" id="position"><%= supernova.position %></td>
+            <td class="editable" id="suptype"><%= supernova.suptype %></td>
+            <td class="editable" id="date"><%= supernova.date %></td>
+            <td class="editable" id="discoverer"><%= supernova.discoverer %></td>
+            <td>
+                <button class="edit-button btn btn-success" id="<%= supernova.sn %>">Edit</button>
+                <button class="save-button btn btn-info" style="display: none" id="<%= supernova.sn %>">Save</button>
+            </td>
+            <td>
+                <button class="del-button btn btn-danger" id="<%= supernova.sn %>">Delete</button>
+            </td>
+        </tr>
+        <% }) %>
 
     </table>
-  </div>
-  <script type="text/javascript">
-    $('.edit-button').click(function(){
-      var editBtn = $(this).html;
-      $("tr#"+this.id+" td.editable").each(function(){
-        var html = $(this).html;
-        var input = $('<input class="saveable" type="text" />');
-        input.val(html);
-        $(this).html(input);
-      })
-      var saveBtn = $('<button class="save-button" id=this.id>Save</button>');
-      saveBtn.click(function(){
-        $("tr#"+this.id+" td.saveable input").each(function(){
-          var val = $(this).val;
-          $(this).parent().val(val);
+</div>
+<script type="text/javascript">
+    $.fn.textWidth = function () {
+        var html_org = $(this).html();
+        var html_calc = '<span>' + html_org + '</span>';
+        $(this).html(html_calc);
+        var width = $(this).find('span:first').width();
+        $(this).html(html_org);
+        return width;
+    };
+
+    var rowProps = function () {
+        $('.edit-button').width($('.save-button').width());
+
+        $('.edit-button').click(function () {
+            var newRow = $(this).parent().parent().hasClass('newRow');
+            $("tr#" + this.id + " td.editable").each(function () {
+                var html = $(this).html();
+                var width;
+                if (!newRow) {
+                    width = $(this).textWidth();
+                } else {
+                    width = $(this).parent().next().find('#' + this.id).textWidth();
+                }
+                var $input = $("<input type='text'>");
+                $input.val(html);
+                $input.width(width);
+                $(this).html($input);
+
+            });
+            $(this).css({'display': 'none'});
+            if (!newRow) {
+                $('#' + this.id + ".save-button").css({'display': 'inline-block'});
+            }
         })
-        $(this).html(editBtn);
-      })
-      $(this).html(saveBtn);
+
+        $('.save-button').click(function () {
+            var nova = {'sn': this.id};
+            $("tr#" + this.id + " td.editable input").each(function () {
+                var val = $(this).val();
+                var par = $(this).parent();
+                nova[par[0].id] = val;
+            });
+            var qStr = "supernovas/update?";
+            for (item in nova) {
+                qStr += item + "=" + nova[item] + "&";
+            }
+            var self = this;
+            $.ajax({
+                url: qStr,
+                type: 'PUT',
+                success: function (res) {
+                    $("tr#" + self.id + " td.editable input").each(function () {
+                        var val = $(this).val();
+                        var par = $(this).parent();
+                        par.html(val);
+                    });
+                    $(self).css({'display': 'none'});
+                    $('#' + self.id + '.edit-button').css({'display': 'inline-block'});
+                    $(self).parent().parent().removeClass('newRow')
+                }
+            })
+        })
+
+        $('.del-button').click(function () {
+            var id = this.id;
+            $.ajax({
+                url: 'supernovas/delete?sn=' + this.id,
+                type: 'DELETE',
+                success: function (result) {
+                    $("tr#" + id).remove();
+                }
+            })
+        })
+
+    }
+    rowProps();
+
+    $('.add-button').click(function () {
+        var table = $('.table');
+        var SN = (Math.floor(Math.random() * 9000 + 1000)).toString() + "C";
+        var newRow = $('<tr class="newRow" id=' + SN + '>' +
+                '<td>' + SN + '</td>' +
+                '<td class="editable" id="suphost"></td>' +
+                '<td class="editable" id="galaxy"></td>' +
+                '<td class="editable" id="mag"></td>' +
+                '<td class="editable" id="position"></td>' +
+                '<td class="editable" id="suptype"></td>' +
+                '<td class="editable" id="date"></td>' +
+                '<td class="editable" id="discoverer"></td>' +
+                '<td>' +
+                '<button class="create-button btn btn-warning" id="' + SN + '">Add</button>' +
+                '<button class="edit-button btn btn-success" style="display: none" id="' + SN + '">Edit</button>' +
+                '<button class="save-button btn btn-info" style="display: none" id="' + SN + '">Save</button>' +
+                '</td>' +
+                '<td>' +
+                '<button class="del-button btn btn-danger" id="' + SN + '">Delete</button>' +
+                '</td>' +
+                '</tr>');
+
+
+        newRow.insertBefore($('.table > tbody > tr:nth-child(2)'));
+        rowProps();
+        $('#' + SN + '.edit-button').click();
+        $('.create-button').width($('.save-button').width());
+        $('.create-button').click(function () {
+            var nova = {'sn': this.id};
+            $("tr#" + this.id + " td.editable input").each(function () {
+                var val = $(this).val();
+                var par = $(this).parent();
+                nova[par[0].id] = val;
+            });
+            var qStr = "supernovas/create?";
+            for (item in nova) {
+                qStr += item + "=" + nova[item] + "&";
+            }
+            var self = this;
+            $.ajax({
+                url: qStr,
+                type: 'POST',
+                success: function (res) {
+                    $("tr#" + self.id + " td.editable input").each(function () {
+                        var val = $(this).val();
+                        var par = $(this).parent();
+                        par.html(val);
+                    });
+                    $(self).css({'display': 'none'});
+                    $('#' + self.id + '.edit-button').css({'display': 'inline-block'});
+                    $(self).parent().parent().removeClass('newRow')
+                }
+            })
+        })
     })
 
-    $('.del-button').click(function(){
-      var id = this.id;
-      $.ajax({
-        url: 'supernovas/delete?sn=' + this.id,
-        type: 'DELETE',
-        success: function (result) {
-          $("tr#" + id).remove();
-        }
-      })
-    })
-
-  </script>
-  </body>
+</script>
+</body>
 </html>
