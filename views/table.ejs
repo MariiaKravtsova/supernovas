@@ -53,30 +53,73 @@
   </div><!-- /.container-fluid -->
 </nav>
 <div id="wrappertable">
-  <div class="legend">
-    <ul>
-      <li>
-        Serial Number is a unique name to catalogue a Supernovae. Expected rate of supernovas is about 30 per second, so we went with numbers and letters.
-      </li>
-      <li>
-        Host of the supernova of the time it was discovered.
-      </li>
-      <li>
-        Magnitude at the time of discovery, gives you a sense of size.
-      </li>
-      <li>
-        Position are given based on J2000.0.
-      </li>
-      <li>
-        Type Ia is a supernova explosion caused by a white dwarf collaps in a binary system star.
-        Type II occurs after a star runs off the fusion and explodes.
-      </li>
-      <li>
-        Date and Discoverer as it was reported and confirmed.
-      </li>
-    </ul>
+  <div class="legend col-md-offset-2 col-xs-8">
+    <table class="table table-bordered">
+
+      <tr>
+        <td>
+          <label>
+            Serial Number
+          </label>
+        </td>
+        <td>
+          unique name to catalogue a Supernovae. Expected rate of supernovas is about 30 per second, so we went with numbers and letters.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>
+            Host
+          </label>
+        </td>
+        <td>
+          Host of the supernova at it's discovery.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>
+            Magnitude
+          </label>
+        </td>
+        <td>
+          Size of the supernova at time of discovery.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>
+            Position
+          </label>
+        </td>
+        <td>
+          J2000.0 coordinates of the supernova.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>
+            Type
+          </label>
+        </td>
+        <td>
+          Type Ia is a supernova explosion caused by a white dwarf collaps in a binary system star. Type II occurs after a star runs off the fusion and explodes.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>
+            Date and Discoverer
+          </label>
+        </td>
+        <td>
+          The date and discoverer as reported and confirmed.
+        </td>
+      </tr>
+
+    </table>
   </div>
-  <table class="table table-condensed">
+  <table class="table table-condensed nova-table">
     <div class="tbl-header">
       <tr>
         <th>Serial Number</th>
@@ -213,7 +256,7 @@
   rowProps();
 
   $('.add-button').click(function () {
-    var table = $('.table');
+    var table = $('#nova-table');
     var SN = (Math.floor(Math.random() * 9000 + 1000)).toString() + "C";
     var newRow = $('<tr class="newRow nova-row" id=' + SN + '>' +
       '<td>' + SN + '</td>' +
@@ -236,7 +279,7 @@
     );
 
 
-    newRow.insertBefore($('.table > tbody > tr:nth-child(2)'));
+    newRow.insertBefore($('#nova-table > tbody > tr:nth-child(2)'));
     rowProps();
     $('#' + SN + '.edit-button').click();
     $('.create-button').width($('.save-button').width());
